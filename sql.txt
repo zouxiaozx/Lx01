@@ -1,0 +1,54 @@
+DROP DATABASE IF EXISTS Works;
+CREATE DATABASE Works DEFAULT CHARSET=GBK;
+USE Works;
+CREATE TABLE UserInfo
+(
+UserName nvarchar(50) Primary key,
+Password nvarchar(50) not null,
+QQ nvarchar(12),
+Email nvarchar(50),
+Type nchar(10) not null,
+UserImg nvarchar(250)
+) ;
+CREATE TABLE Acitvity
+(
+ActivityID int(4) Primary key auto_increment,
+ActivityName nvarchar(125) not null,
+EndTime datetime(8) not null,
+ActivityPicture nvarchar(250) not null,
+ActiveityIntroduction nvarchar(8000) null,
+Summary nvarchar(250) null,
+ActivityVerify nchar(10) not null DEFAULT '´ýÉóºË',
+ActivityStatus nachar(10) null,
+UserName nvarchar(50) not null
+);
+CREATE TABLE WorkInfo
+(
+WorkID int(4) Primary key auto_increment,
+WorkName nvarchar(50) not null,
+WorkPicture nvarchar(250) not null,
+UploadTime datetime(8) not null,
+WorkIntroduction nvarchar(8000) null,
+WorkVerify nchar(10) not null DEFAULT '´ýÉóºË',
+UserName nvarchar(50) not null,
+ActivityName nvarchar(125) null,
+Recommend nchar(2) not null,
+RecommendTime datetime(8) null,
+);
+CREATE TABLE Comment
+(
+CommentID int(4) Primary key auto_increment,
+WorkID int(4) not null,
+WorkName nvarchar(50) not null,
+UserName nvarchar(50) not null,
+CommentContent nvarchar(8000) not null,
+CommentTime datetime(8) null,
+);
+CREATE TABLE Image
+(
+ImgD int(4) Primary key auto_increment,
+ImgUrl nvnarchar(50) not null,
+ImgText nvnarchar(50) not null,
+ImgLink nvnarchar(100) not null,
+ImgAlt nvnarchar(50) not null,
+);
